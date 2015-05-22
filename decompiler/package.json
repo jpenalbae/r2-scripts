@@ -1,0 +1,19 @@
+{
+  "name": "decompiler",
+  "version": "0.1.0",
+  "description": "retdec.com decompiler plugin for radare2",
+  "main": "decompile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "decompiler",
+    "radare"
+  ],
+  "author": "Jaime Peñalba",
+  "license": "LGPL-3.0",
+  "dependencies": {
+    "r2pipe": ">=0.3.1",
+    "retdec": "^0.1.0"
+  }
+}

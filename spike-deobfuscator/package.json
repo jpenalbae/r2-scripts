@@ -1,0 +1,20 @@
+{
+  "name": "spike-deobfuscator",
+  "version": "0.1.0",
+  "description": "Simple spike strings deobfuscator using r2pipe",
+  "main": "spike-host.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "spike",
+    "malaware",
+    "r2pipe",
+    "deobfuscator"
+  ],
+  "author": "Jaime Peñalba",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "r2pipe": ">=0.4.2"
+  }
+}

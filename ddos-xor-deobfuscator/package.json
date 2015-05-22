@@ -1,0 +1,14 @@
+{
+  "name": "deofuscate",
+  "version": "0.0.1",
+  "description": "Simple XOR DDOS strings deobfuscator",
+  "main": "deofuscate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jaime Peñalba",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "r2pipe": ">=0.3.1"
+  }
+}
