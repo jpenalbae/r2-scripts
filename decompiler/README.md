@@ -56,6 +56,8 @@ $ r2 -
 Usage: $decompile [-achs] [-n naming] @ addr
   -a: disable selective decompilation (decompile the hole file)
   -c: clear comments
+  -C: save decompilation results in r2 as a comment
+  -p: produce python code instead of C
   -s: silent. Do not display messages
   -h: displays this help menu
   -n naming: select variable naming
@@ -107,6 +109,16 @@ Disable selective decompilation and decompile the hole binary
 [0x00000000]> $decompile -a
 ```
 
+Save decompilation results as a comment in r2 at the beginning of the function.
+Note that comments can be folded and unfolded in visual mode using key "z"
+```
+[0x00000000]> $decompile -C @ entry0
+```
+
+Produce python code instead of C
+```
+[0x00000000]> $decompile -p @ entry0
+```
 
 # Demo
 

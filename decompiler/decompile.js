@@ -10,9 +10,11 @@ var decopts = {};
 
 function printHelp()
 {
-    console.log('\nUsage: $decompile [-achs] [-n naming] @ addr');
+    console.log('\nUsage: $decompile [-acChps] [-n naming] @ addr');
     console.log('  -a: disable selective decompilation (decompile the hole file)');
     console.log('  -c: clear comments');
+    console.log('  -C: save decompilation results in r2 as a comment');
+    console.log('  -p: produce python code instead of C');
     console.log('  -s: silent. Do not display messages');
     console.log('  -h: displays this help menu');
     console.log('  -n naming: select variable naming');
@@ -31,6 +33,13 @@ function printHelp()
 }
 
 
+function removeComments(code) {
+    var regexp = (args.p)? '^#.*$\n\n?' : '^\/.*$\n\n?';
+    code = code.replace(new RegExp(regexp, 'mig'), '');
+    return code;
+}
+
+
 function decompile(options)
 {
     retdec.decompile(filename, 'bin', options , function(err, res) {
@@ -41,12 +50,18 @@ function decompile(options)
         }
 
         var output = res.hll.toString();
+        var noComments = removeComments(output);
 
-        /* Args: Remove comments */
-        if (args.c)
-            output = output.replace(/^\/.*$\n\n?/mig, '');
+        /* Args: Save output as R2 comment */
+        if (args.C && !args.a) {
+            var comment = new Buffer("DECOMPILER OUTPUT\n\n" + noComments);
+            comment = comment.toString('base64');
+            r2.cmd('CCu base64:' + comment + ' @ ' + fname);
+        }
 
-        console.log(output);
+        var results = (args.c)? noComments : output;
+        console.log(results);
+
         r2.quit();
     });
 }
@@ -78,6 +93,7 @@ if (!args.a) {
 
     var startAddr = '0x' + fcn.ops[0].offset.toString(16);
     var endAddr = '0x' + fcn.ops[fcn.ops.length-1].offset.toString(16);
+
     if (!args.s) {
         console.log("Start: " + startAddr);
         console.log("End: " + endAddr);
@@ -89,6 +105,9 @@ if (!args.a) {
 if (args.n)
     decopts['decomp_var_names'] = args.n;
 
+/* Args: Python ouput */
+if (args.p)
+    decopts['target_language'] = 'py';
 
 /* Do the decompilation */
 if (!args.s) {
