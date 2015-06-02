@@ -1,11 +1,30 @@
 #!/usr/bin/env node
-
-var retdec = require('retdec').apiKey('YOUR_API_KEY_KEY_HERE');
+var fs = require('fs');
 var r2pipe = require('r2pipe');
 var parseArgs = require('minimist');
-
+var retdec = null;
 
 var decopts = {};
+
+
+/* Setup the api key */
+try {
+    var home = process.env.HOME;
+    var key = fs.readFileSync(home + '/.config/radare2/retdec.key').toString();
+    retdec = require('retdec').apiKey(key.split('\n')[0]);
+} catch (e) {
+    console.error(e.stack);
+    console.error('\nCould not load retdec.com api key');
+    console.error('Put your api key into ~/.config/radare2/retdec.key');
+    process.exit(1);
+}
+
+/* Check for rlangpipe */
+if (!process.env.R2PIPE_IN || !process.env.R2PIPE_OUT) {
+    console.error('This script must be run inside radare2');
+    console.error('Exiting...');
+    process.exit(1);
+}
 
 
 function printHelp()

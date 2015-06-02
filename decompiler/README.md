@@ -26,14 +26,11 @@ $ npm install
 
 To use retdec.com service, you will need a free API key which can be obtained by registering at their site: [https://retdec.com/registration/](https://retdec.com/registration/)
 
-Once you are registered you must replace the first javascript line of `decompile.js` with your personal key:
+Once you are registered you must write your api key into `~/.config/radare2/retdec.key`
 
-```js
-#!/usr/bin/env node
-
-var retdec = require('retdec').apiKey('YOUR_API_KEY_KEY_HERE'); <------
-var r2pipe = require('r2pipe');
-var parseArgs = require('minimist');
+Sample `~/.config/radare2/retdec.key` with random key
+```sh
+45ny26sd-a63n-2t54-1236-3ebh3417areh
 
 ```
 
