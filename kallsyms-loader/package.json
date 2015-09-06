@@ -1,0 +1,18 @@
+{
+  "name": "kallsyms-loader",
+  "version": "1.0.0",
+  "description": "Simple kallsyms loader for radare2",
+  "main": "ksymload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "radare2",
+    "kallsyms"
+  ],
+  "author": "Jaime Peñalba",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "r2pipe": "^0.5.1"
+  }
+}
