@@ -76,10 +76,10 @@ function printDaemonStrings(strings, pos, callback)
 function decodeDaemon(callback)
 {
     var daemonname = [];
-    var dF = findFlag('sym.daemonname');
+    var dF = findFlag('obj.daemonname');
 
     /* Split the daemonflag symbol */
-    r2.cmdj('pcj ' + dF.size + '@ sym.daemonname' , function(res) {
+    r2.cmdj('pcj ' + dF.size + '@ obj.daemonname' , function(res) {
         var start = dF.offset;
         var size = 0;
         var isString = true;
@@ -141,7 +141,7 @@ r2pipe.pipe (process.argv[2], function (or2) {
         /* Start decrypting */
         .done(function() {
             decodeDaemon(function() {
-                var remotestr = findFlag('sym.remotestr');
+                var remotestr = findFlag('obj.remotestr');
                 decryptAddr(remotestr.offset, 0, decFunc.start, decFunc.end, function(res) {
                     console.log('\n[+] remotestr');
                     var addresses = res.split('|');
