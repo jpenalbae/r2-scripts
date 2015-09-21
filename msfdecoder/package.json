@@ -1,0 +1,21 @@
+{
+  "name": "msfdecoder",
+  "version": "1.0.0",
+  "description": "Decode multiple shellcodes encoded with msfencode",
+  "main": "msfdecode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "shellcode",
+    "msfencode",
+    "decoder",
+    "r2",
+    "r2pipe"
+  ],
+  "author": "Jaime Peñalba",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "r2pipe": "^0.5.1"
+  }
+}
