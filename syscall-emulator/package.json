@@ -1,0 +1,20 @@
+{
+  "name": "syscall-emulator",
+  "version": "1.0.0",
+  "description": "Example syscall handler for r2",
+  "main": "syscall-handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "syscall",
+    "radare2",
+    "radare",
+    "r2pipe"
+  ],
+  "author": "Jaime Peñalba",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "r2pipe": "^0.5.2"
+  }
+}
