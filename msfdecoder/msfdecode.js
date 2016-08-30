@@ -35,7 +35,7 @@ function decode () {
         regs = r2.cmdj('arj');
 
         /* Check for end of shellcode or invalid opcode */
-        if (cop.type === 'invalid') {
+        if ((cop.type === 'invalid') || (cop.type === 'swi')) {
             dumpShellcode(lastLoop);
             return;
         }
