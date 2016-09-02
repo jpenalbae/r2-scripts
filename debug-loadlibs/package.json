@@ -1,0 +1,21 @@
+{
+  "name": "debug-loadlibs",
+  "version": "1.0.0",
+  "description": "Create flags from symbols of loaded libs while debugging in r2",
+  "main": "loadlib.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "radare",
+    "radare2",
+    "r2",
+    "debug",
+    "loadlibs"
+  ],
+  "author": "Jaime Peñalba",
+  "license": "LGPL-3.0",
+  "dependencies": {
+    "r2pipe": "^1.0.2"
+  }
+}
